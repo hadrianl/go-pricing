@@ -1,4 +1,4 @@
-package pricing_test
+package option_test
 
 import (
 	"testing"
@@ -7,5 +7,5 @@ import (
 )
 
 func TestCalc(t *testing.T) {
-	pricing.Calc()
+	option.Calc()
 }
