@@ -135,3 +135,22 @@ func CalcImpVol(price, s, l, r, t, cp float64) float64 {
 
 	return v
 }
+
+func Measure(s, l, r, t, v, cp float64) (price, delta, gamma, rho, theta, vega float64) {
+	sqrtT := math.Sqrt(t)
+	d1 := calcD1(s, l, r, t, v)
+	d2 := d1 - v*sqrtT
+	d1PDF := pdf(d1)
+	risklessDisc := math.Exp(-r * t)
+	d1CDF := cdf(cp * d1)
+	d2CDF := cdf(cp * d2)
+
+	delta = cp * d1CDF
+	price = s*delta - cp*l*d2CDF*risklessDisc
+	theta = -0.5*d1PDF*s*v/sqrtT - cp*r*l*risklessDisc*d2CDF
+	rho = cp * s * t * risklessDisc * d2CDF
+	vega = s * d1PDF * sqrtT
+	gamma = d1PDF / (s * v * sqrtT)
+
+	return
+}

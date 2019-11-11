@@ -1,3 +1,3 @@
-module option-pricing
+module go-pricing
 
 go 1.12
