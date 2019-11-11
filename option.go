@@ -1,4 +1,4 @@
-package pricing
+package go-pricing
 
 import "github.com/hadrianl/go-pricing/base/bs"
 

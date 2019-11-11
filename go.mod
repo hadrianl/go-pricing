@@ -1,3 +1,3 @@
-module go-pricing
+module pricing
 
 go 1.12
